@@ -41,7 +41,7 @@ $(document).ready(function(){
 		// replace the spaces in the show's name with + sign for search 
 		var searchTerm = buttonValue.replace( /\s+/g, "+");
 		// create a link for search
-		var searchQuery = "http://api.giphy.com/v1/gifs/search?q=" + searchTerm +"&api_key=" + apiKey + "&limit=10&offset=0";
+		var searchQuery = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm +"&api_key=" + apiKey + "&limit=10&offset=0";
 		// making a call to API to get data
 		$.ajax({
 			url: searchQuery, method: "GET"
