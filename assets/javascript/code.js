@@ -17,6 +17,8 @@ $(document).ready(function(){
 	// This function creates buttons of the shows in gifButton
 	// array, and pushes them on the page
  	var createButtons = function(){
+ 		//empty the html
+ 		$("#gifButtons").empty();
  		// loop through the gifbutton array
  		for (var i = 0; i < gifButtons.length; i++){
 			//create a button and add attributes to it
@@ -75,35 +77,32 @@ $(document).ready(function(){
 				$("#gifDisplay").append(gifDiv);
 
 			}
-			//adds an event listener on the gif
-			$(document).on("click", ".gif", function(){
+		}) // function after ajax call ends here						
+	}) // event listener for the button ends here.
+			
+	//adds an event listener on the gif
 
-				var state = $(this).attr("data-state");
-				if (state === "still") {
-					console.log(state);
-					console.log("===================");
-					$(this).attr("src", $(this).attr("data-animated"));
-					$(this).attr("data-state", "animate");
-					console.log($(this).attr("data-state"));
-					console.log("===================");		
-				}
+	$(document).on("click", ".gif", function(){
+		var state = $(this).attr("data-state");
+		if (state === "still") {
+			$(this).attr("src", $(this).attr("data-animated"));
+			$(this).attr("data-state", "animate");	
+		}
 
-				else if (state !== "still") {
-					console.log(state);
-					console.log("===================");
-					$(this).attr("src", $(this).attr("data-still"));
-					$(this).attr("data-state","still");
-					console.log($(this).attr("data-state"));
-					console.log("===================");
+		else if (state !== "still") {
+			$(this).attr("src", $(this).attr("data-still"));
+			$(this).attr("data-state","still");
+		}		
 
-				}		
+	}) //event listener for gif click ends here
 
-			}) //event listener for gif click ends here
-
-
-		}) // function after ajax call ends here
-
-	}) // event listener ends here
+	//add event listener for the user to add a show
+	$("#addButton").on("click", function(){
+		var userInput = $("#addShow").val().trim();
+		gifButtons.push(userInput);
+		$("#addShow").val('');
+		createButtons();
+	}) // event listener to add a show ends here
 
 	createButtons();
 
