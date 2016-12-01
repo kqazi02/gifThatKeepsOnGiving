@@ -1,0 +1,12 @@
+.gifDiv {
+	float: left;
+	margin-right: 5px;
+}
+
+#gifDisplay {
+	margin-top: 10px;
+}
+
+#gifButton{
+	margin-right: 3px;
+}
