@@ -97,7 +97,8 @@ $(document).ready(function(){
 	}) //event listener for gif click ends here
 
 	//add event listener for the user to add a show
-	$("#addButton").on("click", function(){
+	$("#addButton").on("click keypress", function(){
+		event.preventDefault();
 		var userInput = $("#addShow").val().trim();
 		gifButtons.push(userInput);
 		$("#addShow").val('');
